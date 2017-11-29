@@ -5,5 +5,6 @@
 </div>
 
 <div>
-  <app-food-list [foods]="foodList" (delete)="handleDelete($event)"></app-food-list>
+  <app-food-list *ngIf="loading" [foods]="foodList" (delete)="handleDelete($event)"></app-food-list>
+  <p *ngIf="!loading">Loading...</p>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FoodService } from "../../services/food.service";
 
 @Component({
   selector: "app-page-food-list",
@@ -6,19 +7,20 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./page-food-list.component.css"]
 })
 export class PageFoodListComponent implements OnInit {
-  foodList = [
-    { name: "apple pie", calories: 9999 },
-    { name: "banana cake", calories: 19999 },
-    { name: "banana cssdsdsake", calories: 193343999 },
-  ];
+  foodList: object[];
+  loading = false;
 
-  constructor() { }
+  constructor(private foodService: FoodService) { }
 
-  ngOnInit() {
-  }
   handleDelete(item) {
-    const index = this.foodList.indexOf(item);
-    this.foodList.splice(index, 1);
+    this.foodService.delete(item.id, () => {
+      const index = this.foodList.indexOf(item);
+      this.foodList.splice(index, 1);
+    });
   }
-
+  ngOnInit() {
+    this.foodList = this.foodService.getAllFood(() => {
+      this.loading = true;
+    });
+  }
 }

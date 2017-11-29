@@ -1,7 +1,10 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
+// Services
+import { FoodService } from "./services/food.service";
 
+// Components
 import { AppComponent } from "./app.component";
 import { FoodAddFormComponent } from "./components/food-add-form/food-add-form.component";
 import { FoodItemComponent } from "./components/food-item/food-item.component";
@@ -21,7 +24,7 @@ import { PageFoodListComponent } from "./pages/page-food-list/page-food-list.com
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [FoodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
