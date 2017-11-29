@@ -1,5 +1,9 @@
 <h2>Food List</h2>
+{{ foodList | json }}
+<div>
+  <app-food-add-form></app-food-add-form>
+</div>
 
-<app-food-add-form></app-food-add-form>
-
-<app-food-list></app-food-list>
+<div>
+  <app-food-list [foods]="foodList" (delete)="handleDelete($event)"></app-food-list>
+</div>

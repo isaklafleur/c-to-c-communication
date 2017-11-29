@@ -1,3 +1,9 @@
 <p>
   food-list works!
 </p>
+{{ foods | json }}
+
+<div *ngFor="let food of foods">
+
+  <app-food-item [foodItem]="food" (delete)="onDelete(food)"></app-food-item>
+</div>
